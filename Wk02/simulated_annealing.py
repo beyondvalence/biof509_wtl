@@ -1,7 +1,20 @@
+def new_path(existing_path):
+	"""
+	"""
+    path = existing_path[:]
+    point = random.randint(0, len(path)-2)
+    path[point+1], path[point] = path[point], path[point+1]
+    # print(point)
+    return path
+
 # generate a large and random walk to traverse the search space with randomness
 # in order to avoid staying in local minimums
 # with temp_factor
 def simulated_annealing_optimizer(starting_path, cost_func, new_path_func, start_temp, min_temp, steps):
+	"""
+	Creates simulated annealing algorithm
+	
+	"""
     current_path = starting_path[:]
     current_cost = cost_func(current_path)
     temp_factor = -np.log(start_temp / min_temp)
