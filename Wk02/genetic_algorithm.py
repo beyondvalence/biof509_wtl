@@ -92,7 +92,7 @@ def genetic_algorithm_optimizer(starting_path, cost_func, new_path_func, pop_siz
         pop_best = select_best(population, cost_func, int(pop_size / 4))
         new_population = []
         for i in range(pop_size):
-            new_population.append(new_path(recombine(pop_best))) # use new path to scramble the order
+            new_population.append(new_path_func(recombine(pop_best))) # use new path to scramble the order
         population = new_population
         record = {'generation':i, 'current_cost':cost_func(population[0]),}
         history.append(record)
