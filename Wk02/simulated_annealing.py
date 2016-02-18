@@ -4,6 +4,7 @@
     cost function, new path function, start and minimum temp, and
     number of steps to return the optimized path, optimized distance,
     and the other paths and distances.
+    20160218 Wayne Liu
 """
 
 def distance(coords):
@@ -30,8 +31,9 @@ def new_path(existing_path):
     path -- List of reordered coordinates, e.g. [(0,0), (1,1)]
 	"""
     path = existing_path[:]
-    point = random.randint(0, len(path)-2)
-    path[point+1], path[point] = path[point], path[point+1]
+    # switches three points instead of two, marginally better
+    point = random.randint(0, len(path)-3)
+    path[point+2], path[point+1], path[point] = path[point], path[point+2], path[point+1]
     # print(point)
     return path
 
