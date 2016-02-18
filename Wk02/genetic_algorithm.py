@@ -1,9 +1,31 @@
+"""Module to find shortest path connecting series of points
+
+    genetic_algorithm_optimizer accepts a set of coordinates,
+    cost function, new path function, population size, and
+    number of generations to return the optimized path, optimized distance,
+    and the other paths and distances.
+"""
+
+
 def select_best(population, cost_func, num_to_keep):
+    """Selects best specified population based on the cost function
+    
+    Arguments:
+    population --
+    cost_func -- Function deriving optimized metric
+    num_to_keep -- Number of best population to keep
+    
+    Returns:
+    List of best optimized  specified number of coordinates
+    """
     scored_population = [(i, cost_func(i)) for i in population]
     scored_population.sort(key=lambda x: x[1])
     return [i[0] for i in scored_population[:num_to_keep]]
 
+
 def recombine(population):
+    """
+    """
     # Randomly choose two parents
     options = list(range(len(population)))
     random.shuffle(options)
@@ -20,6 +42,8 @@ def recombine(population):
 
 
 def genetic_algorithm_optimizer(starting_path, cost_func, new_path_func, pop_size, generations):
+    """
+    """
     # Create a starting population by randomly shuffling the points
     population = []
     for i in range(pop_size):
