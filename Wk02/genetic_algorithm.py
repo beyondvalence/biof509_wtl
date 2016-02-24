@@ -6,6 +6,24 @@
     and the other paths and distances.
     20160218 Wayne Liu
 """
+import itertools
+import math
+import matplotlib.pyplot as plt
+import numpy as np
+import random
+
+%matplotlib inline
+
+print("Numpy:", np.__version__)
+
+random.seed(0)
+
+
+def distance(coords):
+    distance = 0
+    for p1, p2 in zip(coords[:-1], coords[1:]):
+        distance += ((p2[0] - p1[0]) ** 2 + (p2[1] - p1[1]) ** 2) ** 0.5
+    return distance
 
 
 def select_best(population, cost_func, num_to_keep):
@@ -98,6 +116,7 @@ def genetic_algorithm_optimizer(starting_path, cost_func, new_path_func, pop_siz
         history.append(record)
     return (population[0], cost_func(population[0]), history)
 
+coords = [(0,0), (10,5), (10,10), (5,10), (3,3), (3,7), (12,3), (10,11)]
 
 best_path, best_cost, history = genetic_algorithm_optimizer(coords, distance, new_path, 500, 100)
 print(best_cost)
