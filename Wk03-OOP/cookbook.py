@@ -1,4 +1,6 @@
-# cookbook classes
+# Cookbook classes Week03
+# 20160225THU BIOF509 HW
+# Wayne Liu
 
 
 class recipe(object):
@@ -34,11 +36,13 @@ class recipe(object):
 
     def __str__(self):
         """ Returns a basic string representation of the recipe object"""
-        return "A {0} called {1}, which serves {2}.".format(self.kind, self.name, self.serving_size)
+        return "A {0} called {1}, which serves {2}.".format(
+            self.kind, self.name, self.serving_size
+        )
 
 
     def getNutrition(self):
-        """ Returns the aggregated nutrition facts from the ingredient objects"""
+        """ Returns the all nutrition facts from the ingredient objects"""
         pass
 
 
@@ -46,7 +50,9 @@ class recipe(object):
         """ Returns scaled serving size based on n"""
         pass
 
-pie = recipe("key lime pie", "dessert", ["pie crust", "limes"], "mix and bake", "bowl and knife", 4, {"fat": "lots", "carbs": "sweet"}, 30.4)
+pie = recipe("key lime pie", "dessert", ["pie crust", "limes"],
+             "mix and bake", "bowl and knife", 4,
+             {"fat": "lots", "carbs": "sweet"}, 30.4)
 print(pie)
 print("How much fat?", pie.nutrition['fat'])
 
@@ -56,9 +62,10 @@ class ingredient(object):
 
     Attributes:
     name: A string representing the ingredient name, e.g. chicken wings
-    nutrition: A dictionary representing grams in each nutrient category, e.g. fats, carbs, proteins, vitamins
-    amount: A float in grams of the amount of ingredient proportional to nutritional facts, e.g. 200.0
-    """
+    nutrition: A dictionary representing grams in each nutrient category,
+    e.g. fats, carbs, proteins, vitamins
+    amount: A float in grams of the amount of ingredient proportional to
+    nutritional facts, e.g. 200.0"""
 
 
     def __init__(self, name, nutrition, amount):
@@ -70,7 +77,7 @@ class ingredient(object):
 
     def __str__(self):
         """ Returns a basic string representation of the ingredient"""
-        return "Ingredient: {0}, has {1} grams of carbs, and is {2} grams total.".format(
+        return "{0}, has {1} grams of carbs, and is {2} grams total.".format(
             self.name, self.nutrition["carbs"], self.amount
         )
 
