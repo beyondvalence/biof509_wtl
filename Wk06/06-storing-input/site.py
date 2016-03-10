@@ -11,8 +11,8 @@ from wtforms.validators import DataRequired
 
 
 
-class MyForm(Form):
-    name = StringField('name', validators=[DataRequired()])
+class MyForm(Form, text='first name'):
+    name = StringField(text, validators=[DataRequired()])
 	
 
 from flask_sqlalchemy import SQLAlchemy
@@ -38,7 +38,7 @@ db.create_all()
 	
 @app.route('/', methods=('GET', 'POST'))
 def index():
-	form = MyForm()
+	form = MyForm('first name')
 	previous_visitors = Visitor.query.order_by('id DESC').all()
 	if form.validate_on_submit():
 		name = form.name.data
